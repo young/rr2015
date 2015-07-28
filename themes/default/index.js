@@ -1,9 +1,9 @@
 const colors = {
-  primary: "#f9c300",
-  secondary: "black",
-  tertiary: "white"
+  primary: "#0487B8",
+  secondary: "#0A56BE",
+  tertiary: "#00BC92"
 };
-
+// http://paletton.com/#uid=53q0f0kIlDcmQJitmI6J8rdLllb
 const fonts = {
   primary: "Open Sans Condensed",
   secondary: "Lobster Two",
@@ -11,8 +11,8 @@ const fonts = {
 };
 
 module.exports = {
-  colors: colors,
-  fonts: fonts,
+  colors,
+  fonts,
   global: {
     body: {
       background: colors.primary,
