@@ -15,6 +15,11 @@ var BestDog = React.createClass({
   getInitialState: function() {
     return {bestDog: ''};
   },
+  updateState(item) {
+    return {
+      currentMostPopularDog: item
+    };
+  },
   componentDidMount() {
     AppStore.addChangeListener(this.updateState);
   },
@@ -33,6 +38,7 @@ var BestDog = React.createClass({
         <div>
           {this.state.bestDog}
           <button onClick={this._getDog()} />
+          The most popular dog is: {this.state.currentMostPopularDog}
         </div>
         <Footer />
       </div>
