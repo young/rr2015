@@ -1,0 +1,41 @@
+var React = require('react');
+var Footer = require('../components/Footer')
+var AppStore = require('../../stores/ApplicationStore');
+var PropTypes = React.PropTypes;
+
+var style = {
+  display: 'none'
+};
+
+var BestDog = React.createClass({
+  propTypes: {
+    dogSize: PropTypes.string.isRequired
+  },
+  getInitialState: function() {
+    return {bestDog: 'boxer'};
+  },
+  componentDidMount() {
+    AppStore.addChangeListener(this.updateState);
+  },
+  componentWillUnmount() {
+    AppStore.removeChangeListener(this.updateState);
+  },
+  _getDog() {
+    var dogs = ['pitbull', 'boxer', 'rotweiler'];
+    var rand = Math.floor(Math.random() * (dogs.length - 1));
+    return dog[rand];
+  }
+  render() {
+    var style = this.state.visible ? {display: 'block'} : {display: 'none'};
+    return (
+      <div style={style}>
+        <div>
+          {this._getDog()}
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+});
+
+module.exports = BestDog;
