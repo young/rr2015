@@ -9,10 +9,10 @@ var style = {
 
 var BestDog = React.createClass({
   propTypes: {
-    dogSize: PropTypes.string.isRequired
+    sizeOfDog: PropTypes.string.isRequired
   },
   getInitialState: function() {
-    return {bestDog: 'boxer'};
+    return {bestDog: ''};
   },
   componentDidMount() {
     AppStore.addChangeListener(this.updateState);
@@ -23,14 +23,15 @@ var BestDog = React.createClass({
   _getDog() {
     var dogs = ['pitbull', 'boxer', 'rotweiler'];
     var rand = Math.floor(Math.random() * (dogs.length - 1));
-    return dog[rand];
+    this.setState({bestDog: dog[rand]});
   }
   render() {
     var style = this.state.visible ? {display: 'block'} : {display: 'none'};
     return (
       <div style={style}>
         <div>
-          {this._getDog()}
+          {this.state.bestDog}
+          <button onClick={this._getDog()} />
         </div>
         <Footer />
       </div>
