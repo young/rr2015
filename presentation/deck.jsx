@@ -21,32 +21,24 @@ export default class extends React.Component {
 
         <Slide transition={["slide"]} bgColor="primary">
           <Heading size={1} fit margin="-20px 0px">
-            let & const
+            let &amp; const
           </Heading>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
+        <Slide transition={["slide"]} bgColor="primary" header='let &amp; const'>
           <CodePane
             lang='javascript'
-            source={require("raw!./code/let_const/0.example")} size={1} fit
+            source={require("raw!./code/let_const/base.example")} size={1} fit
             margin="-20px 0px"/>
         </Slide>
 
-        <Slide transition={["slide"]} bgColor="primary">
-
-          <Row>
-          <Fit margin={20}>
-            <Heading>
-              let
-            </Heading>
-          </Fit>
-          </Row>
+        <Slide transition={["slide"]} bgColor="primary" header='let &amp; const'>
           <Row>
 
             <Fill>
               <CodePane
                 lang='javascript'
-                source={require("raw!./code/let_const/0.example")}
+                source={require("raw!./code/let_const/base.example")}
                 padding='0px 20px'
                 margin='0'
                 />

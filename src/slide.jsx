@@ -1,6 +1,6 @@
 /*global window*/
 
-import React from "react/addons";
+import React, { PropTypes } from "react/addons";
 import tweenState from "react-tween-state";
 import Base from "./base";
 import Transitions from "./transitions";
@@ -17,19 +17,20 @@ const Slide = React.createClass({
     };
   },
   propTypes: {
-    align: React.PropTypes.string,
-    presenterStyle: React.PropTypes.object,
-    children: React.PropTypes.node,
-    notes: React.PropTypes.string,
-    slideIndex: React.PropTypes.number,
-    lastSlide: React.PropTypes.number
+    align: PropTypes.string,
+    presenterStyle: PropTypes.object,
+    children: PropTypes.node,
+    notes: PropTypes.string,
+    slideIndex: PropTypes.number,
+    lastSlide: PropTypes.number,
+    header: PropTypes.oneOfType([PropTypes.element, PropTypes.string])
   },
   contextTypes: {
-    styles: React.PropTypes.object,
-    export: React.PropTypes.bool,
-    print: React.PropTypes.bool,
-    overview: React.PropTypes.bool,
-    flux: React.PropTypes.object
+    styles: PropTypes.object,
+    export: PropTypes.bool,
+    print: PropTypes.bool,
+    overview: PropTypes.bool,
+    flux: PropTypes.object
   },
   getInitialState() {
     return {
@@ -99,6 +100,12 @@ const Slide = React.createClass({
         fontSize: 16 * this.state.zoom,
         transform: " translate(-50%,-50%) scale(" + this.state.contentScale + ")",
         padding: 0
+      },
+      header: {
+        position: 'absolute',
+        top: -272,
+        right: 70,
+        fontSize: 50
       }
     };
     return (
@@ -114,6 +121,7 @@ const Slide = React.createClass({
           <div ref="content"
             className="spectacle-content"
             style={[styles.content, this.context.styles.components.content]}>
+            <div style={styles.header}>{this.props.header}</div>
             {this.props.children}
           </div>
         </div>
