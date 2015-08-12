@@ -19,7 +19,8 @@ var EgoBoost5000 = React.createClass({
   getInitialState: function() {
     return {userName: 'Jem'};
   },
-  updateState(name) {
+  updateState(payload) {
+    var name = payload.name || 'stranger';
     setState({
       userName: name
     });
