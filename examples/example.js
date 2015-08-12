@@ -1,18 +1,18 @@
-var React = require('react');
-var _ = require('lodash');
-var Footer = require('../components/footer')
-var ColorChanger = require('../components/color-changer')
-var AppStore = require('../../stores/ApplicationStore');
-var PropTypes = React.PropTypes;
+const React = require('react');
+const _ = require('lodash');
+const Footer = require('../components/footer')
+const ColorChanger = require('../components/color-changer')
+const AppStore = require('../../stores/ApplicationStore');
+const PropTypes = React.PropTypes;
 
-var styles = {
+const styles = {
   fontStyle: {
     textTransform: 'capitalize'
     color: '#FFFFFF'
   }
 };
 
-var EgoBoost5000 = React.createClass({
+const EgoBoost5000 = React.createClass({
   propTypes: {
     fontStyle: PropTypes.object
   },
@@ -20,7 +20,7 @@ var EgoBoost5000 = React.createClass({
     return {userName: 'Jem'};
   },
   updateState(payload) {
-    var name = payload.name || 'stranger';
+    const name = payload.name || 'stranger';
     this.setState({
       userName: name
     });
@@ -32,7 +32,7 @@ var EgoBoost5000 = React.createClass({
     AppStore.removeChangeListener(this.updateState);
   },
   render() {
-    var blendedStyle = _.extend(styles.fontStyle, this.props.fontStyle);
+    const blendedStyle = _.extend(styles.fontStyle, this.props.fontStyle);
     return (
       <div>
         <ColorChanger>
