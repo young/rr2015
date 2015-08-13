@@ -1,8 +1,9 @@
-const React = require('react');
-const _ = require('lodash');
-const Footer = require('../components/footer')
-const ColorChanger = require('../components/color-changer')
-const AppStore = require('../../stores/ApplicationStore');
+import React from 'react';
+import _ from 'lodash';
+import Footer from '../components/footer';
+import ColorChanger from '../components/color-changer';
+import AppStore from '../../stores/ApplicationStore';
+
 const PropTypes = React.PropTypes;
 
 const styles = {
@@ -46,4 +47,4 @@ const EgoBoost5000 = React.createClass({
   }
 });
 
-module.exports = EgoBoost5000;
+export default EgoBoost5000;
