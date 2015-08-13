@@ -3,6 +3,7 @@ import _ from 'lodash';
 import Footer from '../components/footer';
 import ColorChanger from '../components/color-changer';
 import AppStore from '../../stores/ApplicationStore';
+import connectToStore from '../../decorators/connectToStore';
 
 const styles = {
   fontStyle: {
@@ -11,6 +12,13 @@ const styles = {
   }
 };
 
+const setState = function() {
+  return {
+    name: AppStore.getName()
+  };
+};
+
+@connectToStore(AppStore, setState)
 class EgoBoost5000 extends React.Component {
   static propTypes = {
     fontStyle: PropTypes.object
