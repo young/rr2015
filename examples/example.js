@@ -1,10 +1,8 @@
-import React from 'react';
-import _ from 'lodash';
+import React, { PropTypes } from 'react';
 import Footer from '../components/footer';
 import ColorChanger from '../components/color-changer';
 import AppStore from '../../stores/ApplicationStore';
-
-const PropTypes = React.PropTypes;
+import connectToStore from '../../decorators/connectToStore';
 
 const styles = {
   fontStyle: {
@@ -13,6 +11,13 @@ const styles = {
   }
 };
 
+const setState = function() {
+  return {
+    userName: AppStore.getName()
+  };
+};
+
+@connectToStore(AppStore, setState)
 class EgoBoost5000 extends React.Component {
   static propTypes = {
     fontStyle: PropTypes.object
@@ -39,7 +44,7 @@ class EgoBoost5000 extends React.Component {
   }
 
   render() {
-    const blendedStyle = _.extend(styles.fontStyle, this.props.fontStyle);
+    const blendedStyle = {...styles.fontStyle, ...this.props.fontStyle};
     return (
       <div>
         <ColorChanger>
