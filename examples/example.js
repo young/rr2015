@@ -1,10 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import _ from 'lodash';
 import Footer from '../components/footer';
 import ColorChanger from '../components/color-changer';
 import AppStore from '../../stores/ApplicationStore';
-
-const PropTypes = React.PropTypes;
 
 const styles = {
   fontStyle: {
@@ -39,7 +37,7 @@ class EgoBoost5000 extends React.Component {
   }
 
   render() {
-    const blendedStyle = _.extend(styles.fontStyle, this.props.fontStyle);
+    const blendedStyle = {...styles.fontStyle, ...this.props.fontStyle};
     return (
       <div>
         <ColorChanger>
