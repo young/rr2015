@@ -8,7 +8,7 @@ const PropTypes = React.PropTypes;
 
 const styles = {
   fontStyle: {
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
     color: '#FFFFFF'
   }
 };
