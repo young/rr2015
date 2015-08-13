@@ -1,25 +1,43 @@
 import React from 'react';
 
-const styles = {
-  wrapper: {
-    background: '#B3B0CC',
-    position: 'fixed',
-    bottom: '0'
+const cts = (Component, stores, getState) => {
+  class ConnectToStore extends React.Component {
+    constructor() {
+      super();
+      this.state = getState();
+      this.handleChange = this.handleChange.bind(this);
+    }
+    componentWillMount() {
+      if (Array.isArray(stores)) {
+        stores.forEach(store => {
+          store.addChangeListener(this.handleChange);
+        });
+      } else {
+        stores.addChangeListener(this.handleChange);
+      }
+    }
+    componentWillUnmount() {
+      if (Array.isArray(stores)) {
+        stores.forEach(store => {
+          store.removeChangeListener(this.handleChange);
+        });
+      } else {
+        stores.removeChangeListener(this.handleChange);
+      }
+    }
+    handleChange() {
+      this.setState(getState());
+    }
+    render () {
+      return <Component {...this.props} {...this.state}/>;
+    }
   }
+
+  return ConnectToStore;
 };
 
-class Footer extends React.Component {
-  constructor() {
-    super();
-  }
-
-  render() {
-    return (
-      <div style={styles.wrapper}>
-        React Rally 2015
-      </div>
-    );
-  }
+export function decorator(Component, stores, getState) {
+  return cts(...Array.from(arguments), true);
 }
 
-export default Footer;
+export default cts;
