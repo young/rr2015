@@ -1,14 +1,15 @@
 {
   "name": "react-rally",
   "version": "1.0.0",
-  "description": "",
+  "description": "React Rally 2015",
   "main": "index.js",
   "directories": {
     "example": "examples"
   },
   "dependencies": {
     "eslint": "^1.1.0",
-    "eslint-plugin-react": "^3.2.2"
+    "eslint-plugin-react": "^3.2.2",
+    "lodash": "^3.10.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -22,7 +23,7 @@
     "react",
     "rally"
   ],
-  "author": "Jem <jzyerror54+npm@gmail.com> (http://jemyoung.com/)",
+  "author": "Jem Young<jzyerror54+npm@gmail.com> (http://jemyoung.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/young/rr2015/issues"
