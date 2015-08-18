@@ -1,47 +1,40 @@
-import React, { PropTypes } from 'react';
-import Footer from '../components/footer';
-import ColorChanger from '../components/color-changer';
-import AppStore from '../../stores/ApplicationStore';
-import connectToStore from '../../decorators/connectToStore';
+var React = require('react');
+var Footer = require('../components/footer')
+var ColorChanger = require('../components/color-changer')
+var AppStore = require('../../stores/ApplicationStore');
+var PropTypes = React.PropTypes;
 
-const styles = {
-  fontStyle: {
-    textTransform: 'capitalize',
-    color: '#FFFFFF'
-  }
-};
-
-const setState = function() {
-  return {
-    userName: AppStore.getName()
-  };
-};
-
-@connectToStore(AppStore, setState)
-class EgoBoost5000 extends React.Component {
-  static propTypes = {
-    fontStyle: PropTypes.object,
-    userName: PropTypes.string
-  }
-
-  constructor() {
-    super();
-  }
-
+var EgoBoost5000 = React.createClass({
+  propTypes: {
+    nameStyle: PropTypes.object
+  },
+  getInitialState: function() {
+    return {name: 'Jem'};
+  },
+  updateState(payload) {
+    var name = payload.name || 'stranger';
+    this.setState({
+      name: name
+    });
+  },
+  componentDidMount() {
+    AppStore.addChangeListener(this.updateState);
+  },
+  componentWillUnmount() {
+    AppStore.removeChangeListener(this.updateState);
+  },
   render() {
-    const {fontStyle, userName} = this.props;
-    const blendedStyle = {...styles.fontStyle, ...fontStyle};
     return (
       <div>
         <ColorChanger>
           <div>You're awesome,
-            <span style={blendedStyle}>{userName}</span>
+            <span style={this.props.nameStyle}>{this.state.name}</span>
           </div>
         </ColorChanger>
         <Footer />
       </div>
     );
   }
-}
+});
 
-export default EgoBoost5000;
+module.exports = EgoBoost5000;
