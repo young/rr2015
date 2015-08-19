@@ -1,10 +1,10 @@
-var React = require('react');
-var Footer = require('../components/footer')
-var ColorChanger = require('../components/color-changer')
-var AppStore = require('../../stores/ApplicationStore');
-var PropTypes = React.PropTypes;
+const React = require('react');
+const Footer = require('../components/footer')
+const ColorChanger = require('../components/color-changer')
+const AppStore = require('../../stores/ApplicationStore');
+const PropTypes = React.PropTypes;
 
-var EgoBoost5000 = React.createClass({
+const EgoBoost5000 = React.createClass({
   propTypes: {
     nameStyle: PropTypes.object
   },
@@ -12,7 +12,7 @@ var EgoBoost5000 = React.createClass({
     return {name: 'Jem'};
   },
   updateState(payload) {
-    var name = payload.name || 'stranger';
+    const name = payload.name || 'stranger';
     this.setState({
       name: name
     });
@@ -27,7 +27,7 @@ var EgoBoost5000 = React.createClass({
     return (
       <div>
         <ColorChanger>
-          <div>You're awesome,
+          <div>You are awesome,
             <span style={this.props.nameStyle}>{this.state.name}</span>
           </div>
         </ColorChanger>
