@@ -27,7 +27,7 @@ var EgoBoost5000 = React.createClass({
     return (
       <div>
         <ColorChanger>
-          <div>You're awesome,
+          <div>You are awesome,
             <span style={this.props.nameStyle}>{this.state.name}</span>
           </div>
         </ColorChanger>
