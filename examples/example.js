@@ -1,7 +1,7 @@
-const React = require('react');
-const Footer = require('../components/footer')
-const ColorChanger = require('../components/color-changer')
-const AppStore = require('../../stores/ApplicationStore');
+import React from 'react';
+import Footer from '../components/footer';
+import ColorChanger from '../components/color-changer';
+import AppStore from '../../stores/ApplicationStore';
 const PropTypes = React.PropTypes;
 
 const EgoBoost5000 = React.createClass({
