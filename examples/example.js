@@ -13,11 +13,8 @@ class EgoBoost5000 extends React.Component {
     this.state = {name: 'Jem'};
   }
 
-  updateState(payload) {
-    const name = payload.name || 'stranger';
-    this.setState({
-      name: name
-    });
+  updateState({name = 'stranger'}) {
+    this.setState({name});
   }
 
   componentDidMount() {
@@ -29,11 +26,12 @@ class EgoBoost5000 extends React.Component {
   }
 
   render() {
+    const { nameStyle } = this.props;
     return (
       <div>
         <ColorChanger>
           <div>You are awesome,
-            <span style={this.props.nameStyle}>{this.state.name}</span>
+            <span style={nameStyle}>{this.state.name}</span>
           </div>
         </ColorChanger>
         <Footer />
