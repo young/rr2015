@@ -63,14 +63,12 @@ const cts = (Component, stores, getState) => {
 };
 
 export default function(Component, stores, getState) {
-  if (arguments.length === 2) {
-    // Rename arguments
-    const s = Component;
-    const g = getState;
+  const args = Array.from(arguments);
+  if (args.length === 2) {
     return (ComponentToDecorate) => {
-      return cts(ComponentToDecorate, s, g);
+      return cts(ComponentToDecorate, args[0], args[1]);
     };
   }
 
-  return cts(Component, stores, getState);
+  return cts(...arguments);
 }
