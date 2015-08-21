@@ -2,27 +2,23 @@ import React, { PropTypes } from 'react';
 import Footer from '../components/footer';
 import ColorChanger from '../components/color-changer';
 import AppStore from '../../stores/ApplicationStore';
+import connectToStores from '../decorators/connectToStores';
 
+const getState = () => {
+  return {
+    userName: AppStore.getName()
+  };
+};
+
+@connectToStores(AppStore, getState)
 class EgoBoost5000 extends React.Component {
   static propTypes = {
-    nameStyle: PropTypes.object
+    nameStyle: PropTypes.object,
+    userName: PropTypes.string
   }
 
-  constructor() {
-    super();
-    this.state = {name: 'Jem'};
-  }
-
-  updateState({name = 'stranger'}) {
-    this.setState({name});
-  }
-
-  componentDidMount() {
-    AppStore.addChangeListener(this.updateState);
-  }
-
-  componentWillUnmount() {
-    AppStore.removeChangeListener(this.updateState);
+  static defaultProps = {
+    userName: 'stranger'
   }
 
   render() {
