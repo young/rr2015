@@ -7,9 +7,9 @@ import React from 'react';
  * @example:
  *   As a decorator:
  *
- *   import {decorator as connectToStores} from 'Connect-to-Stores';
+ *   import {connectToStores} from 'Connect-to-Stores';
  *
- *   @connectToStores(SomeComponent, SomeStore, function(){})
+ *   @connectToStores(SomeStore, function(){})
  *   class SomeComponent {
  *     ...
  *   }
@@ -24,10 +24,9 @@ import React from 'react';
  * @param  {React.Component} Component The component to wrap
  * @param  {Array.<Object> | Object} stores The stores to watch for changes
  * @param  {function} getState Calculate values and return into view as props
- * @param  {Boolean} [decorate] If true, allow component to be used as a decorator
  * @return {React.Component}
  */
-const cts = (Component, stores, getState, decorate) => {
+const cts = (Component, stores, getState) => {
   class ConnectToStore extends React.Component {
     constructor() {
       super();
@@ -59,14 +58,19 @@ const cts = (Component, stores, getState, decorate) => {
       return <Component {...this.props} {...this.state}/>;
     }
   }
-  if (decorate) {
-    return () => ConnectToStore;
-  }
+
   return ConnectToStore;
 };
 
-export function decorator(Component, stores, getState) {
-  return cts(...Array.from(arguments), true);
-}
+export default function(Component, stores, getState) {
+  if (arguments.length === 2) {
+    // Rename arguments
+    const s = Component;
+    const g = getState;
+    return (ComponentToDecorate) => {
+      return cts(ComponentToDecorate, s, g);
+    };
+  }
 
-export default cts;
+  return cts(Component, stores, getState);
+}
