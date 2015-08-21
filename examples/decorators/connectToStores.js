@@ -70,5 +70,5 @@ export default function(Component, stores, getState) {
     };
   }
 
-  return cts(...arguments);
+  return cts(...args);
 }
