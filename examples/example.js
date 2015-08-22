@@ -23,11 +23,12 @@ class EgoBoost5000 extends React.Component {
 
   render() {
     const { nameStyle } = this.props;
+    const { userName } = this.state;
     return (
       <div>
         <ColorChanger>
           <div>You are awesome,
-            <span style={nameStyle}>{this.state.name}</span>
+            <span style={nameStyle}>{userName}</span>
           </div>
         </ColorChanger>
         <Footer />
