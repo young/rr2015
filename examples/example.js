@@ -33,5 +33,4 @@ class EgoBoost5000 extends React.Component {
   }
 }
 
-
 export default EgoBoost5000;
