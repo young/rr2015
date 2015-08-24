@@ -4,11 +4,7 @@ import ColorChanger from '../components/color-changer';
 import AppStore from '../../stores/ApplicationStore';
 import connectToStores from '../decorators/connectToStores';
 
-const getState = () => {
-  return {
-    userName: AppStore.getName()
-  };
-};
+const getState = () => ({userName: AppStore.getName()});
 
 @connectToStores(AppStore, getState)
 class EgoBoost5000 extends React.Component {
