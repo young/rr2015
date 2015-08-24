@@ -2,7 +2,7 @@
  * @description Use Symbols to quickly iterate over an object
  *
  * Symbols have a unqiue characteristc wherein they are skipped over when using
- * a for-of loop. If we use a symbol as an object key, it will be skipped
+ * a for-in loop. If we use a symbol as an object key, it will be skipped
  * over allowing us store arbitraily large amounts of data on an object
  * without any sort of iteration penalty.
  *
